@@ -1,11 +1,11 @@
 import java.util.HashMap;
 import java.util.Map;
 
-public class RezervationService {
+public class ReservationService {
     //pnr-->reservations
     private Map<String,Reservation> reservations;
 
-    public RezervationService(){
+    public ReservationService(){
         reservations = new HashMap<>();
     }
 
