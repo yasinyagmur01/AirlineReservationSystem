@@ -1,4 +1,5 @@
-import java.sql.SQLOutput;
+package model;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -36,7 +37,7 @@ public class SeatMap {
     }
 
     //---SEAT STATUS---
-    public SeatStatus getSeatStatus(int row,int col){
+    public SeatStatus getSeatStatus(int row, int col){
         validate(row,col);
         return bookedSeats.contains(key(row,col))
                 ? SeatStatus.BOOKED

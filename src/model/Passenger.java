@@ -1,6 +1,6 @@
-public class Passenger {
+package model;
 
-    private String id;
+public class Passenger { private String id;
     private String firstName;
     private String lastName;
 
@@ -44,8 +44,4 @@ public class Passenger {
     public String toString() {
         return id + " - " + getFullName();
     }
-
-
 }
-
-

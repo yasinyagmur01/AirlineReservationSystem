@@ -1,3 +1,7 @@
+package service;
+
+import model.Flight;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;

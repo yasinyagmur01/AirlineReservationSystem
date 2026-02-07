@@ -1,3 +1,5 @@
+package model;
+
 public enum ReservationStatus {
     ACTIVE,
     CANCELLED,

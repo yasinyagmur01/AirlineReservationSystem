@@ -1,3 +1,5 @@
+package model;
+
 public class Reservation {
     private String pnr;
     private Passenger passenger;
@@ -6,7 +8,7 @@ public class Reservation {
     private ReservationStatus status;
 
 
-    public Reservation(String pnr,Passenger passenger,Flight flight,String seatLabel){
+    public Reservation(String pnr, Passenger passenger, Flight flight, String seatLabel){
             this.pnr=pnr;
             this.passenger = passenger;
             this.flight=flight;

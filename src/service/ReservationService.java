@@ -1,9 +1,15 @@
+package service;
+
+import model.Flight;
+import model.Passenger;
+import model.Reservation;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class ReservationService {
     //pnr-->reservations
-    private Map<String,Reservation> reservations;
+    private Map<String, Reservation> reservations;
 
     public ReservationService(){
         reservations = new HashMap<>();
