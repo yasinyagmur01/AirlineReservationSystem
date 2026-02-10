@@ -3,6 +3,7 @@ package service;
 import model.Flight;
 import model.Passenger;
 import model.Reservation;
+import model.SeatMap;
 import util.PNRGenerator;
 
 import java.util.HashMap;
@@ -19,7 +20,14 @@ public class ReservationService {
     }
 
     public Reservation createReservations(Passenger p, Flight f, String seatLabel){
-       String pnr = pnrGenerator.nextPNR();
+        SeatMap seatMap = f.getSeatMap();
+
+        if(!seatMap.isAvailable(seatLabel)){
+            throw new IllegalArgumentException("Seat not available: "+seatLabel);
+        }
+        seatMap.bookSeat(seatLabel);
+
+        String pnr = pnrGenerator.nextPNR();
         Reservation reservation = new Reservation(pnr,p,f,seatLabel);
         reservations.put(pnr,reservation);
 
@@ -35,6 +43,7 @@ public class ReservationService {
         if(r==null)return false;
 
         r.cancel();
+        r.getFlight().getSeatMap().cancelSeat(r.getSeatLabel());
         return true;
     }
 
