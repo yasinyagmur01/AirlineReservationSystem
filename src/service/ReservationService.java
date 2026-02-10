@@ -3,6 +3,7 @@ package service;
 import model.Flight;
 import model.Passenger;
 import model.Reservation;
+import util.PNRGenerator;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,13 +11,15 @@ import java.util.Map;
 public class ReservationService {
     //pnr-->reservations
     private Map<String, Reservation> reservations;
+    private final PNRGenerator pnrGenerator;
 
     public ReservationService(){
         reservations = new HashMap<>();
+        pnrGenerator = new PNRGenerator();
     }
 
     public Reservation createReservations(Passenger p, Flight f, String seatLabel){
-        String pnr = "PNR"+reservations.size()+1;
+       String pnr = pnrGenerator.nextPNR();
         Reservation reservation = new Reservation(pnr,p,f,seatLabel);
         reservations.put(pnr,reservation);
 
