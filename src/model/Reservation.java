@@ -13,6 +13,7 @@ public class Reservation {
             this.passenger = passenger;
             this.flight=flight;
             this.seatLabel=seatLabel;
+            //In first reservation it should be Active (before check-in or cancel operations)
             this.status = ReservationStatus.ACTIVE;
     }
 
@@ -37,11 +38,23 @@ public class Reservation {
     }
 
     public void cancel(){
+        if(status == ReservationStatus.CHECKED_IN){
+            throw new IllegalStateException("Checked-In reservation cannot be cancalled.");
+        }
+        if(status == ReservationStatus.CANCELLED){
+            return;
+        }
         status = ReservationStatus.CANCELLED;
     }
 
     public void checkIn(){
-        status = ReservationStatus.CHECKED_IN;
+       if(status==ReservationStatus.CANCELLED){
+           throw new IllegalStateException("Cancelled reservvation cannot be Checked-in");
+       }
+       if(status==ReservationStatus.CHECKED_IN){
+           return;
+       }
+       status = ReservationStatus.CHECKED_IN;
     }
 
     @Override
